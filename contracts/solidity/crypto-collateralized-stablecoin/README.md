@@ -10,12 +10,8 @@ This project implements a crypto-collateralized ERC-20 stablecoin backed by ETH 
 **Goal:** Understand ERC-20 tokens and how stablecoins maintain their peg.
 
 - 📖 Read:
-  - [ ] [ERC-20 Standard – EIP](https://eips.ethereum.org/EIPS/eip-20)
-  - [ ] [OpenZeppelin ERC20 Docs](https://docs.openzeppelin.com/contracts/5.x/api/token/erc20)
-  - [ ] [What is DAI – MakerDAO](https://makerdao.com/en/learn/what-is-dai/)
-
-- 🎥 Watch:
-  - [ ] [Crypto Collateralized Stablecoins – Finematics](https://www.youtube.com/watch?v=qcucK5gPEPM)
+  - [x] [ERC-20 Standard – EIP](https://eips.ethereum.org/EIPS/eip-20)
+  - [x] [OpenZeppelin ERC20 Docs](https://docs.openzeppelin.com/contracts/5.x/api/token/erc20)
 
 - 🧪 Task:
   - [ ] Deploy a basic ERC-20 token using Hardhat + OpenZeppelin
