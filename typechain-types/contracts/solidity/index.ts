@@ -3,5 +3,7 @@
 /* eslint-disable */
 import type * as cryptoCollateralizedStablecoin from "./crypto-collateralized-stablecoin";
 export type { cryptoCollateralizedStablecoin };
+import type * as erc1155 from "./erc-1155";
+export type { erc1155 };
 import type * as payableExample from "./payable-example";
 export type { payableExample };
