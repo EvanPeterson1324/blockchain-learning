@@ -26,15 +26,21 @@ import type {
 export interface PokemonGatchaGameInterface extends Interface {
   getFunction(
     nameOrSignature:
+      | "GOLD"
+      | "GOLD_DECIMALS"
+      | "MAX_DROP_ID"
+      | "ROLL_PRICE"
+      | "addDrop"
       | "balanceOf"
       | "balanceOfBatch"
       | "burn"
       | "isApprovedForAll"
-      | "mint"
       | "owner"
       | "pause"
       | "paused"
+      | "removeDrop"
       | "renounceOwnership"
+      | "roll"
       | "safeBatchTransferFrom"
       | "safeTransferFrom"
       | "setApprovalForAll"
@@ -55,6 +61,23 @@ export interface PokemonGatchaGameInterface extends Interface {
       | "Unpaused"
   ): EventFragment;
 
+  encodeFunctionData(functionFragment: "GOLD", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "GOLD_DECIMALS",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "MAX_DROP_ID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "ROLL_PRICE",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "addDrop",
+    values: [BigNumberish]
+  ): string;
   encodeFunctionData(
     functionFragment: "balanceOf",
     values: [AddressLike, BigNumberish]
@@ -71,17 +94,18 @@ export interface PokemonGatchaGameInterface extends Interface {
     functionFragment: "isApprovedForAll",
     values: [AddressLike, AddressLike]
   ): string;
-  encodeFunctionData(
-    functionFragment: "mint",
-    values: [AddressLike, BigNumberish, BigNumberish]
-  ): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(functionFragment: "pause", values?: undefined): string;
   encodeFunctionData(functionFragment: "paused", values?: undefined): string;
   encodeFunctionData(
+    functionFragment: "removeDrop",
+    values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
     functionFragment: "renounceOwnership",
     values?: undefined
   ): string;
+  encodeFunctionData(functionFragment: "roll", values: [AddressLike]): string;
   encodeFunctionData(
     functionFragment: "safeBatchTransferFrom",
     values: [
@@ -111,6 +135,17 @@ export interface PokemonGatchaGameInterface extends Interface {
   encodeFunctionData(functionFragment: "unpause", values?: undefined): string;
   encodeFunctionData(functionFragment: "uri", values: [BigNumberish]): string;
 
+  decodeFunctionResult(functionFragment: "GOLD", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "GOLD_DECIMALS",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "MAX_DROP_ID",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "ROLL_PRICE", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "addDrop", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "balanceOfBatch",
@@ -121,14 +156,15 @@ export interface PokemonGatchaGameInterface extends Interface {
     functionFragment: "isApprovedForAll",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "mint", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "pause", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "paused", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "removeDrop", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "renounceOwnership",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "roll", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "safeBatchTransferFrom",
     data: BytesLike
@@ -324,6 +360,16 @@ export interface PokemonGatchaGame extends BaseContract {
     event?: TCEvent
   ): Promise<this>;
 
+  GOLD: TypedContractMethod<[], [bigint], "view">;
+
+  GOLD_DECIMALS: TypedContractMethod<[], [bigint], "view">;
+
+  MAX_DROP_ID: TypedContractMethod<[], [bigint], "view">;
+
+  ROLL_PRICE: TypedContractMethod<[], [bigint], "view">;
+
+  addDrop: TypedContractMethod<[id: BigNumberish], [void], "nonpayable">;
+
   balanceOf: TypedContractMethod<
     [account: AddressLike, id: BigNumberish],
     [bigint],
@@ -348,19 +394,17 @@ export interface PokemonGatchaGame extends BaseContract {
     "view"
   >;
 
-  mint: TypedContractMethod<
-    [account: AddressLike, id: BigNumberish, amount: BigNumberish],
-    [void],
-    "nonpayable"
-  >;
-
   owner: TypedContractMethod<[], [string], "view">;
 
   pause: TypedContractMethod<[], [void], "nonpayable">;
 
   paused: TypedContractMethod<[], [boolean], "view">;
 
+  removeDrop: TypedContractMethod<[id: BigNumberish], [void], "nonpayable">;
+
   renounceOwnership: TypedContractMethod<[], [void], "nonpayable">;
+
+  roll: TypedContractMethod<[account: AddressLike], [void], "payable">;
 
   safeBatchTransferFrom: TypedContractMethod<
     [
@@ -406,12 +450,27 @@ export interface PokemonGatchaGame extends BaseContract {
 
   unpause: TypedContractMethod<[], [void], "nonpayable">;
 
-  uri: TypedContractMethod<[arg0: BigNumberish], [string], "view">;
+  uri: TypedContractMethod<[id: BigNumberish], [string], "view">;
 
   getFunction<T extends ContractMethod = ContractMethod>(
     key: string | FunctionFragment
   ): T;
 
+  getFunction(
+    nameOrSignature: "GOLD"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "GOLD_DECIMALS"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "MAX_DROP_ID"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "ROLL_PRICE"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
+    nameOrSignature: "addDrop"
+  ): TypedContractMethod<[id: BigNumberish], [void], "nonpayable">;
   getFunction(
     nameOrSignature: "balanceOf"
   ): TypedContractMethod<
@@ -441,13 +500,6 @@ export interface PokemonGatchaGame extends BaseContract {
     "view"
   >;
   getFunction(
-    nameOrSignature: "mint"
-  ): TypedContractMethod<
-    [account: AddressLike, id: BigNumberish, amount: BigNumberish],
-    [void],
-    "nonpayable"
-  >;
-  getFunction(
     nameOrSignature: "owner"
   ): TypedContractMethod<[], [string], "view">;
   getFunction(
@@ -457,8 +509,14 @@ export interface PokemonGatchaGame extends BaseContract {
     nameOrSignature: "paused"
   ): TypedContractMethod<[], [boolean], "view">;
   getFunction(
+    nameOrSignature: "removeDrop"
+  ): TypedContractMethod<[id: BigNumberish], [void], "nonpayable">;
+  getFunction(
     nameOrSignature: "renounceOwnership"
   ): TypedContractMethod<[], [void], "nonpayable">;
+  getFunction(
+    nameOrSignature: "roll"
+  ): TypedContractMethod<[account: AddressLike], [void], "payable">;
   getFunction(
     nameOrSignature: "safeBatchTransferFrom"
   ): TypedContractMethod<
@@ -503,7 +561,7 @@ export interface PokemonGatchaGame extends BaseContract {
   ): TypedContractMethod<[], [void], "nonpayable">;
   getFunction(
     nameOrSignature: "uri"
-  ): TypedContractMethod<[arg0: BigNumberish], [string], "view">;
+  ): TypedContractMethod<[id: BigNumberish], [string], "view">;
 
   getEvent(
     key: "ApprovalForAll"

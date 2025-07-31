@@ -77,4 +77,11 @@ describe("PokemonGatchaGame", function () {
       "OwnableUnauthorizedAccount"
     );
   });
+
+  it("should revert if trying to get drop URI for non-existent drop", async function () {
+    await expect(contract.getDropURI(9999)).to.be.revertedWithCustomError(
+      contract,
+      "DropNotFound"
+    );
+  });
 });
