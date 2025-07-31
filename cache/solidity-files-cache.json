@@ -617,42 +617,6 @@
         "Arrays"
       ]
     },
-    "/Users/evan/workstation/node-projects/blockchain-learning/node_modules/@openzeppelin/contracts/utils/SlotDerivation.sol": {
-      "lastModificationDate": 1753710606625,
-      "contentHash": "43950136ee6a1761d2cbed39d16bb1e0",
-      "sourceName": "@openzeppelin/contracts/utils/SlotDerivation.sol",
-      "solcConfig": {
-        "version": "0.8.28",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "SlotDerivation"
-      ]
-    },
     "/Users/evan/workstation/node-projects/blockchain-learning/node_modules/@openzeppelin/contracts/utils/Comparators.sol": {
       "lastModificationDate": 1753710606603,
       "contentHash": "0e57405a6f979853cbfeb0df3546c3a3",
@@ -723,6 +687,42 @@
       ],
       "artifacts": [
         "StorageSlot"
+      ]
+    },
+    "/Users/evan/workstation/node-projects/blockchain-learning/node_modules/@openzeppelin/contracts/utils/SlotDerivation.sol": {
+      "lastModificationDate": 1753710606625,
+      "contentHash": "43950136ee6a1761d2cbed39d16bb1e0",
+      "sourceName": "@openzeppelin/contracts/utils/SlotDerivation.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "SlotDerivation"
       ]
     },
     "/Users/evan/workstation/node-projects/blockchain-learning/node_modules/@openzeppelin/contracts/utils/math/Math.sol": {
@@ -950,6 +950,80 @@
       ],
       "artifacts": [
         "Ownable"
+      ]
+    },
+    "/Users/evan/workstation/node-projects/blockchain-learning/contracts/solidity/interface-as-param/IAnimal.sol": {
+      "lastModificationDate": 1753970193687,
+      "contentHash": "c4ececd58e845289549c06d13e337e03",
+      "sourceName": "contracts/solidity/interface-as-param/IAnimal.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.28"
+      ],
+      "artifacts": [
+        "IAnimal"
+      ]
+    },
+    "/Users/evan/workstation/node-projects/blockchain-learning/contracts/solidity/interface-as-param/Zoo.sol": {
+      "lastModificationDate": 1753971505064,
+      "contentHash": "8db63b96d7ef1992efe655aed33c91c9",
+      "sourceName": "contracts/solidity/interface-as-param/Zoo.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./IAnimal.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.28"
+      ],
+      "artifacts": [
+        "Zoo"
       ]
     },
     "/Users/evan/workstation/node-projects/blockchain-learning/contracts/solidity/payable-example/Payable.sol": {

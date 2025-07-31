@@ -3,4 +3,5 @@
 /* eslint-disable */
 export * as cryptoCollateralizedStablecoin from "./crypto-collateralized-stablecoin";
 export * as erc1155 from "./erc-1155";
+export * as interfaceAsParam from "./interface-as-param";
 export * as payableExample from "./payable-example";

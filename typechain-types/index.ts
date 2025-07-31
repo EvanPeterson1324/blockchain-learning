@@ -44,5 +44,9 @@ export type { PeggedStableCoin } from "./contracts/solidity/crypto-collateralize
 export { PeggedStableCoin__factory } from "./factories/contracts/solidity/crypto-collateralized-stablecoin/PeggedStableCoin__factory";
 export type { PokemonGatchaGame } from "./contracts/solidity/erc-1155/PokemonGatchaGame";
 export { PokemonGatchaGame__factory } from "./factories/contracts/solidity/erc-1155/PokemonGatchaGame__factory";
+export type { IAnimal } from "./contracts/solidity/interface-as-param/IAnimal";
+export { IAnimal__factory } from "./factories/contracts/solidity/interface-as-param/IAnimal__factory";
+export type { Zoo } from "./contracts/solidity/interface-as-param/Zoo";
+export { Zoo__factory } from "./factories/contracts/solidity/interface-as-param/Zoo__factory";
 export type { Payable } from "./contracts/solidity/payable-example/Payable";
 export { Payable__factory } from "./factories/contracts/solidity/payable-example/Payable__factory";

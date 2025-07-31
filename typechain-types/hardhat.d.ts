@@ -90,6 +90,14 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.PokemonGatchaGame__factory>;
     getContractFactory(
+      name: "IAnimal",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IAnimal__factory>;
+    getContractFactory(
+      name: "Zoo",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Zoo__factory>;
+    getContractFactory(
       name: "Payable",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Payable__factory>;
@@ -190,6 +198,16 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.PokemonGatchaGame>;
     getContractAt(
+      name: "IAnimal",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IAnimal>;
+    getContractAt(
+      name: "Zoo",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Zoo>;
+    getContractAt(
       name: "Payable",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
@@ -272,6 +290,14 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.PokemonGatchaGame>;
     deployContract(
+      name: "IAnimal",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IAnimal>;
+    deployContract(
+      name: "Zoo",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.Zoo>;
+    deployContract(
       name: "Payable",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Payable>;
@@ -371,6 +397,16 @@ declare module "hardhat/types/runtime" {
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.PokemonGatchaGame>;
+    deployContract(
+      name: "IAnimal",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.IAnimal>;
+    deployContract(
+      name: "Zoo",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.Zoo>;
     deployContract(
       name: "Payable",
       args: any[],
