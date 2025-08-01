@@ -26,6 +26,14 @@ contract Zoo {
         animalsInZoo[animalId] = animal;
     }
 
+    function getAnimal(bytes32 animalId) public view returns (IAnimal) {
+        IAnimal animal = animalsInZoo[animalId];
+        if (address(animal) == address(0)) {
+            revert InvalidIdentifier("Animal not found");
+        }
+        return animal;
+    }
+
     function hearAnimalSound(bytes32 animalId) public view returns (string memory) {
         IAnimal animal = animalsInZoo[animalId];
         return animal.makeSound();

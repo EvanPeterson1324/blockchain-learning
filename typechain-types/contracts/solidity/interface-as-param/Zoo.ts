@@ -22,7 +22,11 @@ import type {
 
 export interface ZooInterface extends Interface {
   getFunction(
-    nameOrSignature: "addAnimal" | "animalsInZoo" | "hearAnimalSound"
+    nameOrSignature:
+      | "addAnimal"
+      | "animalsInZoo"
+      | "getAnimal"
+      | "hearAnimalSound"
   ): FunctionFragment;
 
   encodeFunctionData(
@@ -31,6 +35,10 @@ export interface ZooInterface extends Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "animalsInZoo",
+    values: [BytesLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getAnimal",
     values: [BytesLike]
   ): string;
   encodeFunctionData(
@@ -43,6 +51,7 @@ export interface ZooInterface extends Interface {
     functionFragment: "animalsInZoo",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "getAnimal", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "hearAnimalSound",
     data: BytesLike
@@ -100,6 +109,8 @@ export interface Zoo extends BaseContract {
 
   animalsInZoo: TypedContractMethod<[arg0: BytesLike], [string], "view">;
 
+  getAnimal: TypedContractMethod<[animalId: BytesLike], [string], "view">;
+
   hearAnimalSound: TypedContractMethod<[animalId: BytesLike], [string], "view">;
 
   getFunction<T extends ContractMethod = ContractMethod>(
@@ -116,6 +127,9 @@ export interface Zoo extends BaseContract {
   getFunction(
     nameOrSignature: "animalsInZoo"
   ): TypedContractMethod<[arg0: BytesLike], [string], "view">;
+  getFunction(
+    nameOrSignature: "getAnimal"
+  ): TypedContractMethod<[animalId: BytesLike], [string], "view">;
   getFunction(
     nameOrSignature: "hearAnimalSound"
   ): TypedContractMethod<[animalId: BytesLike], [string], "view">;

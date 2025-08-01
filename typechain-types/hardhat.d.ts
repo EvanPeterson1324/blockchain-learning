@@ -90,9 +90,17 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.PokemonGatchaGame__factory>;
     getContractFactory(
+      name: "Car",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Car__factory>;
+    getContractFactory(
       name: "IAnimal",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IAnimal__factory>;
+    getContractFactory(
+      name: "Tiger",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Tiger__factory>;
     getContractFactory(
       name: "Zoo",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -198,10 +206,20 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.PokemonGatchaGame>;
     getContractAt(
+      name: "Car",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Car>;
+    getContractAt(
       name: "IAnimal",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
     ): Promise<Contracts.IAnimal>;
+    getContractAt(
+      name: "Tiger",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Tiger>;
     getContractAt(
       name: "Zoo",
       address: string | ethers.Addressable,
@@ -290,9 +308,17 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.PokemonGatchaGame>;
     deployContract(
+      name: "Car",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.Car>;
+    deployContract(
       name: "IAnimal",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IAnimal>;
+    deployContract(
+      name: "Tiger",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.Tiger>;
     deployContract(
       name: "Zoo",
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -398,10 +424,20 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.PokemonGatchaGame>;
     deployContract(
+      name: "Car",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.Car>;
+    deployContract(
       name: "IAnimal",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IAnimal>;
+    deployContract(
+      name: "Tiger",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.Tiger>;
     deployContract(
       name: "Zoo",
       args: any[],
