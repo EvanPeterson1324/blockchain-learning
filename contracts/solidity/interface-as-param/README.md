@@ -13,3 +13,5 @@ Case #4: Address passed to Zoo.sol is a contract that does not extend IAnimal an
 calls a function that has the same function name with an extra param
 
 How to solve these wierd behaviors? ERC-165?
+
+TODO: document method of using erc-165

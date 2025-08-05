@@ -5,4 +5,6 @@ export { Car__factory } from "./Car__factory";
 export { Firework__factory } from "./Firework__factory";
 export { IAnimal__factory } from "./IAnimal__factory";
 export { Tiger__factory } from "./Tiger__factory";
+export { ZebraERC165__factory } from "./ZebraERC165__factory";
 export { Zoo__factory } from "./Zoo__factory";
+export { ZooERC165Enforced__factory } from "./ZooERC165Enforced__factory";

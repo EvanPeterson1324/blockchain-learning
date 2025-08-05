@@ -1,10 +1,11 @@
 import { expect } from "chai";
 import { ethers, } from "hardhat";
 import { Signer } from "ethers";
-import { Zoo, Tiger, Car, Firework } from "../../../typechain-types";
+import { Zoo, ZooERC165Enforced, Tiger, Car, Firework } from "../../../typechain-types";
 
 describe("Zoo", function () {
     let Zoo: Zoo;
+    let ZooERC165Enforced: ZooERC165Enforced;
     let Tiger: Tiger;
     let Car: Car;
     let Firework: Firework;
@@ -14,12 +15,14 @@ describe("Zoo", function () {
         [owner] = await ethers.getSigners();
     
         const contractFactory = await ethers.getContractFactory("Zoo");
+        const zooERC165EnforcedFactory = await ethers.getContractFactory("ZooERC165Enforced");
         const tigerFactory = await ethers.getContractFactory("Tiger");
         const carFactory = await ethers.getContractFactory("Car");
         const fireworkFactory = await ethers.getContractFactory("Firework");
 
         // Deploy a new instance of the contracts before each test
         Zoo = await contractFactory.connect(owner).deploy();
+        ZooERC165Enforced = await zooERC165EnforcedFactory.connect(owner).deploy();
         Tiger = await tigerFactory.connect(owner).deploy();
         Car = await carFactory.connect(owner).deploy();
         Firework = await fireworkFactory.connect(owner).deploy();
@@ -81,5 +84,22 @@ describe("Zoo", function () {
         await expect(Zoo.connect(owner).hearAnimalSound(animalId)).to.be.reverted;
     });
 
-    // TODO: How to solve this problem? (ERC-165?)
+    it("ZooERC165Enforced.sol - should NOT revert when contract does implement IAnimal interface", async function () {
+        const tigerAddr = await Tiger.getAddress();
+        const tigerId = ethers.encodeBytes32String("tiger");
+
+        // This should not revert since Tiger implements IAnimal
+         await expect(async () => {
+            await ZooERC165Enforced.connect(owner).addAnimal(tigerId, tigerAddr);
+        }
+        ).to.not.be.reverted
+    });
+
+    it("ZooERC165Enforced.sol - should revert when contract does not implement IAnimal interface", async function () {
+        const carAddr = await Car.getAddress();
+        const animalId = ethers.encodeBytes32String("car");
+
+        // Same as case #2 but now we are enforcing the IAnimal interface
+        await expect(ZooERC165Enforced.connect(owner).addAnimal(animalId, carAddr)).to.be.reverted;
+    });
 });

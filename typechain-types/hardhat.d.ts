@@ -106,9 +106,17 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Tiger__factory>;
     getContractFactory(
+      name: "ZebraERC165",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ZebraERC165__factory>;
+    getContractFactory(
       name: "Zoo",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Zoo__factory>;
+    getContractFactory(
+      name: "ZooERC165Enforced",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ZooERC165Enforced__factory>;
     getContractFactory(
       name: "Payable",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -230,10 +238,20 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.Tiger>;
     getContractAt(
+      name: "ZebraERC165",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ZebraERC165>;
+    getContractAt(
       name: "Zoo",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
     ): Promise<Contracts.Zoo>;
+    getContractAt(
+      name: "ZooERC165Enforced",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ZooERC165Enforced>;
     getContractAt(
       name: "Payable",
       address: string | ethers.Addressable,
@@ -333,9 +351,17 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Tiger>;
     deployContract(
+      name: "ZebraERC165",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ZebraERC165>;
+    deployContract(
       name: "Zoo",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Zoo>;
+    deployContract(
+      name: "ZooERC165Enforced",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ZooERC165Enforced>;
     deployContract(
       name: "Payable",
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -457,10 +483,20 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Tiger>;
     deployContract(
+      name: "ZebraERC165",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ZebraERC165>;
+    deployContract(
       name: "Zoo",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Zoo>;
+    deployContract(
+      name: "ZooERC165Enforced",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ZooERC165Enforced>;
     deployContract(
       name: "Payable",
       args: any[],

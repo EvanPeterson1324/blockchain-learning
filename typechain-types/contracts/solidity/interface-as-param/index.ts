@@ -5,4 +5,6 @@ export type { Car } from "./Car";
 export type { Firework } from "./Firework";
 export type { IAnimal } from "./IAnimal";
 export type { Tiger } from "./Tiger";
+export type { ZebraERC165 } from "./ZebraERC165";
 export type { Zoo } from "./Zoo";
+export type { ZooERC165Enforced } from "./ZooERC165Enforced";

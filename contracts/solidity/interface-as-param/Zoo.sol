@@ -13,29 +13,24 @@ contract Zoo {
     error InvalidAddress(string message);
     error InvalidIdentifier(string message);
 
-    function addAnimal(bytes32 animalId, IAnimal animal) public {
-        if (animalId == bytes32(0)) {
-            revert InvalidIdentifier("Animal ID can not be empty");
-        }
-
-        if (address(animal) == address(0)) {
-            revert InvalidAddress("Animal address");
-        }
-
-        // Add an animal to the zoo
-        animalsInZoo[animalId] = animal;
+    function addAnimal(bytes32 animalId, IAnimal animal) external virtual {
+        if (animalId == bytes32(0)) revert InvalidIdentifier("Animal ID can not be empty");
+        if (address(animal) == address(0)) revert InvalidAddress("Animal address");
+        animalsInZoo[animalId] = animal; // Add an animal to the zoo
     }
 
-    function getAnimal(bytes32 animalId) public view returns (IAnimal) {
-        IAnimal animal = animalsInZoo[animalId];
-        if (address(animal) == address(0)) {
-            revert InvalidIdentifier("Animal not found");
-        }
-        return animal;
+    function getAnimal(bytes32 animalId) external view returns (IAnimal) {
+        return _getAnimal(animalId);
     }
 
-    function hearAnimalSound(bytes32 animalId) public view returns (string memory) {
-        IAnimal animal = animalsInZoo[animalId];
+    function hearAnimalSound(bytes32 animalId) external view returns (string memory) {
+        IAnimal animal = _getAnimal(animalId);
         return animal.makeSound();
+    }
+
+    function _getAnimal(bytes32 animalId) private view returns (IAnimal) {
+        IAnimal animal = animalsInZoo[animalId];
+        if (address(animal) == address(0)) revert InvalidIdentifier("Animal not found");
+        return animal;
     }
 }
