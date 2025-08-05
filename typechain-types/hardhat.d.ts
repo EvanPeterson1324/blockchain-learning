@@ -94,6 +94,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Car__factory>;
     getContractFactory(
+      name: "Firework",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Firework__factory>;
+    getContractFactory(
       name: "IAnimal",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IAnimal__factory>;
@@ -211,6 +215,11 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.Car>;
     getContractAt(
+      name: "Firework",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Firework>;
+    getContractAt(
       name: "IAnimal",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
@@ -312,6 +321,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Car>;
     deployContract(
+      name: "Firework",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.Firework>;
+    deployContract(
       name: "IAnimal",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IAnimal>;
@@ -428,6 +441,11 @@ declare module "hardhat/types/runtime" {
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Car>;
+    deployContract(
+      name: "Firework",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.Firework>;
     deployContract(
       name: "IAnimal",
       args: any[],

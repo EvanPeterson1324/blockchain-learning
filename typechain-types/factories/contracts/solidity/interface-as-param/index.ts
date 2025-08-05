@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export { Car__factory } from "./Car__factory";
+export { Firework__factory } from "./Firework__factory";
 export { IAnimal__factory } from "./IAnimal__factory";
 export { Tiger__factory } from "./Tiger__factory";
 export { Zoo__factory } from "./Zoo__factory";

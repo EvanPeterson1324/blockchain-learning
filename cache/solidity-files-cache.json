@@ -1135,6 +1135,42 @@
       "artifacts": [
         "Payable"
       ]
+    },
+    "/Users/evan/workstation/node-projects/blockchain-learning/contracts/solidity/interface-as-param/Firework.sol": {
+      "lastModificationDate": 1754395308166,
+      "contentHash": "be74401427cec4e30f79ddb9398573fd",
+      "sourceName": "contracts/solidity/interface-as-param/Firework.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.28"
+      ],
+      "artifacts": [
+        "Firework"
+      ]
     }
   }
 }

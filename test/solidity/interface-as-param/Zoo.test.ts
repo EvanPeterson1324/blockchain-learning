@@ -1,12 +1,13 @@
 import { expect } from "chai";
 import { ethers, } from "hardhat";
-import { AddressLike, Signer } from "ethers";
-import { Zoo, Tiger, Car } from "../../../typechain-types";
+import { Signer } from "ethers";
+import { Zoo, Tiger, Car, Firework } from "../../../typechain-types";
 
 describe("Zoo", function () {
     let Zoo: Zoo;
     let Tiger: Tiger;
     let Car: Car;
+    let Firework: Firework;
     let owner: Signer;
     
     beforeEach(async function () {
@@ -15,15 +16,17 @@ describe("Zoo", function () {
         const contractFactory = await ethers.getContractFactory("Zoo");
         const tigerFactory = await ethers.getContractFactory("Tiger");
         const carFactory = await ethers.getContractFactory("Car");
+        const fireworkFactory = await ethers.getContractFactory("Firework");
 
         // Deploy a new instance of the contracts before each test
         Zoo = await contractFactory.connect(owner).deploy();
         Tiger = await tigerFactory.connect(owner).deploy();
         Car = await carFactory.connect(owner).deploy();
+        Firework = await fireworkFactory.connect(owner).deploy();
     });
     
     it("should allow adding an animal and hearing it's sound", async function () {
-        const tigerAddr: AddressLike = await Tiger.getAddress();
+        const tigerAddr = await Tiger.getAddress();
         const animalId = ethers.encodeBytes32String("tiger"); // or any unique id
         await Zoo.connect(owner).addAnimal(animalId, tigerAddr);
         
@@ -50,7 +53,7 @@ describe("Zoo", function () {
     // Case #2: This is unexpected behavior! What if we want to force the contract to implement IAnimal?
     it("should not revert when does not implement IAnimal explicitly but has a makeSound() function", async function () {
         // Deploy a dummy contract with no makeSound function
-        const carAddr: AddressLike = await Car.getAddress();
+        const carAddr = await Car.getAddress();
         const animalId = ethers.encodeBytes32String("car"); // or any unique id
 
         // This won't revert on addAnimal since no calls to the contract are made
@@ -62,10 +65,21 @@ describe("Zoo", function () {
         }
         ).to.not.be.reverted
 
+        // Uh-oh! We called a contract that doesn't implement IAnimal, but has a similar function signature
         const carSound = await Zoo.connect(owner).hearAnimalSound(animalId);
         expect(carSound).to.equal("Vroom!");
     });
 
-    // TODO: Test contract function with same name as make sound but different params
+    it("should revert when contract has a makeSound function but with different parameters", async function () {
+        const fireworkAddr = await Firework.getAddress();
+        const animalId = ethers.encodeBytes32String("firework"); // or any unique id
+
+        // This won't revert on addAnimal since no calls to the contract are made
+        await expect(Zoo.connect(owner).addAnimal(animalId, fireworkAddr)).to.not.be.reverted;
+        
+        // Expecting it to revert since the function signature doesn't match IAnimal
+        await expect(Zoo.connect(owner).hearAnimalSound(animalId)).to.be.reverted;
+    });
+
     // TODO: How to solve this problem? (ERC-165?)
 });

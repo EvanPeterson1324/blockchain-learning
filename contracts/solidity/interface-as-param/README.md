@@ -1,6 +1,6 @@
 ## Overview
 
-Cases
+### Cases
 
 Case #1: Address passed to Zoo.sol is not a contract, and we attempt to call `makeSound()`
 

@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { Car } from "./Car";
+export type { Firework } from "./Firework";
 export type { IAnimal } from "./IAnimal";
 export type { Tiger } from "./Tiger";
 export type { Zoo } from "./Zoo";

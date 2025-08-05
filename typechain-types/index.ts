@@ -46,6 +46,8 @@ export type { PokemonGatchaGame } from "./contracts/solidity/erc-1155/PokemonGat
 export { PokemonGatchaGame__factory } from "./factories/contracts/solidity/erc-1155/PokemonGatchaGame__factory";
 export type { Car } from "./contracts/solidity/interface-as-param/Car";
 export { Car__factory } from "./factories/contracts/solidity/interface-as-param/Car__factory";
+export type { Firework } from "./contracts/solidity/interface-as-param/Firework";
+export { Firework__factory } from "./factories/contracts/solidity/interface-as-param/Firework__factory";
 export type { IAnimal } from "./contracts/solidity/interface-as-param/IAnimal";
 export { IAnimal__factory } from "./factories/contracts/solidity/interface-as-param/IAnimal__factory";
 export type { Tiger } from "./contracts/solidity/interface-as-param/Tiger";
